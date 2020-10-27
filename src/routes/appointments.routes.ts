@@ -3,7 +3,6 @@ import { startOfHour, parseISO } from 'date-fns';
 
 // Repositories
 import AppointmentRepository from '../repositories/appointments.repository';
-import Appointment from '../models/appointment';
 
 // Router
 const AppointmentRouter = Router();
