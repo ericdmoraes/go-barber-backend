@@ -6,6 +6,7 @@
     "configurations": [
         {
             "type": "node",
+            "port": 9229,
             "request": "attach",
             "protocol": "inspector",
             "restart": true,
