@@ -1,2 +1,6 @@
-.vscode
 node_modules
+.vscode
+
+tmp/*
+!tmp/.gitkeep
+
