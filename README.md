@@ -12,4 +12,4 @@ Após configurar o arquivo do banco de dados você precisará rodar:
 
 ---
 
-## Esse repositório se proponho a ser o backend das aplicações desenvolvidas no Bootcamp da Rocketseat (tanto o ReactJS quanto o React Native)
+### Esse repositório se proponho a ser a API das aplicações desenvolvidas no Bootcamp da Rocketseat (tanto o ReactJS quanto o React Native)
