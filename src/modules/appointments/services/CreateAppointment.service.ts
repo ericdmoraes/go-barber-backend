@@ -4,10 +4,10 @@ import { startOfHour } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
 
 // Errors
-import AppError from '../errors/app.error';
+import AppError from '@shared/errors/app.error';
 
 // Model
-import Appointment from '../models/appointment.model';
+import Appointment from '../infra/typeorm/entities/appointment.model';
 
 // Repository
 import AppointmentRepository from '../repositories/appointments.repository';

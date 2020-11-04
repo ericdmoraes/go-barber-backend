@@ -6,14 +6,14 @@ import "express-async-errors";
 import routes from './routes';
 
 // Multer
-import uploadconfig from './config/upload.config';
+import uploadconfig from '@config/upload.config';
 
 // Errors
-import AppError from './errors/app.error';
+import AppError from '@shared/errors/app.error';
 
 // TypeORM
 import 'reflect-metadata';
-import './database';
+import '@shared/infra/typeorm';
 
 const app = express();
 

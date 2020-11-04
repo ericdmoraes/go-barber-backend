@@ -4,13 +4,13 @@ import { sign } from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
 
 // Errors
-import AppError from '../errors/app.error';
+import AppError from '@shared/errors/app.error';
 
 // configs
-import auth from '../config/auth.config';
+import auth from '@config/auth.config';
 
 // Models
-import User from '../models/user.model';
+import User from '../infra/typeorm/entities/user.model';
 
 interface Request {
   email: string;

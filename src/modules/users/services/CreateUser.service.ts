@@ -5,10 +5,10 @@ import { hash } from 'bcryptjs';
 import { getRepository } from 'typeorm';
 
 // Errors
-import AppError from '../errors/app.error';
+import AppError from '@shared/errors/app.error';
 
 // Models
-import User from '../models/user.model';
+import User from '@modules/users/infra/typeorm/entities/user.model';
 
 interface Request {
   name: string;

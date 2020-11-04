@@ -2,11 +2,11 @@ import { Router } from 'express';
 import multer from 'multer';
 
 // config
-import uploadConfig from '../config/upload.config';
+import uploadConfig from '@config/upload.config';
 
 // Services
-import CreateUserService from '../services/CreateUser.service';
-import UpdateUserAvatarService from '../services/UpdateUserAvatar.service';
+import CreateUserService from '@modules/users/services/CreateUser.service';
+import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatar.service';
 
 // Middlewares
 import ensureAuth from '../middlewares/ensureAuth.middleware';
