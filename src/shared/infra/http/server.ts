@@ -1,19 +1,20 @@
+import 'reflect-metadata';
 // Express
 import express, { Request, Response, NextFunction } from 'express';
-import "express-async-errors";
+import 'express-async-errors';
 
 // Routes
-import routes from './routes';
 
 // Multer
 import uploadconfig from '@config/upload.config';
 
 // Errors
 import AppError from '@shared/errors/app.error';
+import routes from './routes';
 
 // TypeORM
-import 'reflect-metadata';
 import '@shared/infra/typeorm';
+import '@shared/container';
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use(express.json());
 app.use('/files', express.static(uploadconfig.directory));
 app.use(routes);
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       status: 'error',

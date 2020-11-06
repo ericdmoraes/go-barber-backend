@@ -1,13 +1,20 @@
 // Modules
-import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import { getRepository } from 'typeorm';
+
+// dependency injection
+import { injectable, inject } from 'tsyringe';
+
+// HashProvider
 
 // Errors
 import AppError from '@shared/errors/app.error';
 
 // configs
 import auth from '@config/auth.config';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
+
+// interfaces
+import IUserRepository from '../repositories/IUsersRepository';
 
 // Models
 import User from '../infra/typeorm/entities/user.model';
@@ -22,21 +29,27 @@ interface Response {
   token: string;
 }
 
+@injectable()
 class CreateSession {
-  public async run({ email, password }: Request): Promise<Response> {
-    const userRepository = getRepository(User);
+  constructor(
+    @inject('UsersRepository')
+    private userRepository: IUserRepository,
 
-    const user = await userRepository.findOne({
-      where: {
-        email,
-      },
-    });
+    @inject('HashProvider')
+    private hashProvider: IHashProvider,
+  ) {}
+
+  public async run({ email, password }: Request): Promise<Response> {
+    const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
       throw new AppError('Wrong email or password', 401);
     }
 
-    const passwordMatch = await compare(password, user.password);
+    const passwordMatch = await this.hashProvider.compareHash(
+      password,
+      user.password,
+    );
 
     if (!passwordMatch) {
       throw new AppError('Wrong email or password', 401);
