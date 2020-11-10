@@ -7,7 +7,7 @@ import { uuid } from 'uuidv4';
 // Model
 import User from '@modules/users/infra/typeorm/entities/user.model';
 
-class UsersRepository implements IUserRepository {
+class FakeUsersRepository implements IUserRepository {
   private users: User[] = [];
 
   async findById(id: string): Promise<User | undefined> {
@@ -18,11 +18,7 @@ class UsersRepository implements IUserRepository {
     return this.users.find(user => user.email === email);
   }
 
-  async create({
-    name,
-    email,
-    password,
-  }: ICreateUserDTO): Promise<User | undefined> {
+  async create({ name, email, password }: ICreateUserDTO): Promise<User> {
     const user = new User();
     Object.assign(user, { id: uuid(), name, email, password });
     this.users.push(user);
@@ -36,4 +32,4 @@ class UsersRepository implements IUserRepository {
   }
 }
 
-export default UsersRepository;
+export default FakeUsersRepository;

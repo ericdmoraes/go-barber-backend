@@ -55,7 +55,7 @@ describe('Create session Service', () => {
       password: '123123',
     });
 
-    expect(
+    await expect(
       createSession.run({
         email: 'unkown@mail.com',
         password: '123123',
@@ -82,7 +82,7 @@ describe('Create session Service', () => {
       password: '123123',
     });
 
-    expect(
+    await expect(
       createSession.run({
         email: 'eric@mail.com',
         password: '1111111',

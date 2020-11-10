@@ -669,6 +669,13 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.2.tgz#d25295f9e4ca5989a2c610754dc02a9721235eeb"
   integrity sha512-jeYJU2kl7hL9U5xuI/BhKPZ4vqGM/OmK6whiFAXVhlstzZhVamWhDSmHyGLIp+RVyuF9/d0dqr2P85aFj4BvJg==
 
+"@types/nodemailer@^6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.0.tgz#d8c039be3ed685c4719a026455555be82c124b74"
+  integrity sha512-KY7bFWB0MahRZvVW4CuW83qcCDny59pJJ0MQ5ifvfcjNwPlIT0vW4uARO4u1gtkYnWdhSvURegecY/tzcukJcA==
+  dependencies:
+    "@types/node" "*"
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -3896,6 +3903,11 @@ node-notifier@^8.0.0:
     shellwords "^0.1.1"
     uuid "^8.3.0"
     which "^2.0.2"
+
+nodemailer@^6.4.15:
+  version "6.4.15"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.4.15.tgz#da5dbb78b8376e34c232c6aa3d2d65cfe17440e9"
+  integrity sha512-2/z13dBTWdgTRlxVMAK6C13dCI22GEShET4+jFLlQsxpblxYhojnucfcTZO1QBu5CsHvABsBj2JCGO3vl0HSQA==
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.5.0:
   version "2.5.0"
