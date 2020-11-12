@@ -4,17 +4,29 @@ import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHa
 import AppError from '@shared/errors/app.error';
 import CreateUserService from './CreateUser.service';
 
-describe('Create user Service', () => {
-  it('should be able to create an user', async () => {
-    const fakeUserRepository = new FakeUserRepository();
-    const fakeHashProvider = new FakeHashProvider();
+// Globals
+// Providers
+let fakeHashProvider: FakeHashProvider;
 
-    const createUser = new CreateUserService(
+// Repositories
+let fakeUserRepository: FakeUserRepository;
+
+// services
+let createUserService: CreateUserService;
+
+describe('Create user Service', () => {
+  beforeEach(() => {
+    fakeUserRepository = new FakeUserRepository();
+    fakeHashProvider = new FakeHashProvider();
+
+    createUserService = new CreateUserService(
       fakeUserRepository,
       fakeHashProvider,
     );
+  });
 
-    const user = await createUser.run({
+  it('should be able to create an user', async () => {
+    const user = await createUserService.run({
       email: 'eric@mail.com',
       name: 'eric',
       password: '123123',
@@ -24,27 +36,17 @@ describe('Create user Service', () => {
   });
 
   it('should not be able to create an user with the same email', async () => {
-    const fakeUserRepository = new FakeUserRepository();
-    const fakeHashProvider = new FakeHashProvider();
-
-    const createUser = new CreateUserService(
-      fakeUserRepository,
-      fakeHashProvider,
-    );
-
-    const email = 'eric@mail.com';
-
-    await createUser.run({
-      email,
+    await createUserService.run({
+      email: 'eric@mail.com',
       name: 'eric',
       password: '123123',
     });
 
     await expect(
-      createUser.run({
-        email,
-        name: 'eric',
-        password: '123123',
+      createUserService.run({
+        email: 'eric@mail.com',
+        name: 'eridasdc',
+        password: '123asdasda123',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

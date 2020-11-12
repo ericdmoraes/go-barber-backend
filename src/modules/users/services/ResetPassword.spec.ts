@@ -12,7 +12,7 @@ import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 // Services
 import ResetPasswordService from './ResetPassword.service';
 
-// Lets ---------
+// Globals
 // Providers
 let fakeHashProvider: FakeHashProvider;
 

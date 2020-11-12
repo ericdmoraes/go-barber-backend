@@ -1,5 +1,6 @@
 // Dependency Injection
 import { inject, injectable } from 'tsyringe';
+import path from 'path';
 
 // Errors
 import AppError from '@shared/errors/app.error';
@@ -37,6 +38,13 @@ class SendForgotPasswordEmailService {
 
     const { token } = await this.userTokenRepository.generate(user.id);
 
+    const templateFile = path.resolve(
+      __dirname,
+      '..',
+      'views',
+      'ForgotPasswordTemplate.hbs',
+    );
+
     await this.mailProvider.sendMail({
       to: {
         name: user.name,
@@ -44,10 +52,10 @@ class SendForgotPasswordEmailService {
       },
       subject: 'Recuperação de senha',
       templateData: {
-        template: 'Olá {{ name }}, {{ token }}',
+        file: templateFile,
         variables: {
           name: user.name,
-          token,
+          link: `https://localhost:3000/?token=${token}`,
         },
       },
     });

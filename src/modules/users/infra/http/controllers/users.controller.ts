@@ -17,7 +17,7 @@ export default class UsersController {
 
     const createdUser = await userService.run({ name, email, password });
 
-    delete createdUser.password;
+    // delete createdUser.password;
 
     return res.json(createdUser);
   }
